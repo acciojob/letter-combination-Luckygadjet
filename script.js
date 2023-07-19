@@ -1,4 +1,8 @@
-let table={
+
+
+function letterCombinations(input_digit) {
+  //Complete the function
+	let table={
 	"2":"abc",
 	"3":"def",
 	"4":"ghi",
@@ -10,15 +14,7 @@ let table={
 }
 
 let combos = [];
-
-function letterCombinations(input_digit) {
-  //Complete the function
-	
-	solve(0,"", input_digit);
-	return combos;
-}
-
-function solve(index, str, input_digit){
+	function solve(index, str){
 
 	if(input_digit <= index){
 		combos.push(str);
@@ -28,9 +24,17 @@ function solve(index, str, input_digit){
 	let currchar = table[index];
 
 	for(let i = index,i<table[currchar].length;i++){
-		solve(index+1, str + table[currchar][i],input_digit);
+		solve(index+1, str + table[currchar][i]);
 	}
 	
 }
+
+	solve(0,"");
+	
+	
+	return combos;
+}
+
+
 
 module.exports = letterCombinations;
